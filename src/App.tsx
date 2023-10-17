@@ -1,7 +1,12 @@
-import React from 'react';
+import Button from './components/Button/Button';
+import './index.css';
 
 function App() {
-  return <div>TEST</div>;
+  const showMessage = () => {
+    console.log('hello world');
+  };
+
+  return <Button title="show posts" onClick={showMessage} />;
 }
 
 export default App;
