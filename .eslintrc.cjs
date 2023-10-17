@@ -34,7 +34,7 @@ module.exports = {
         "@typescript-eslint",
         "react"
     ],
-    "ignorePatterns": ["vite.config.ts"],
+    "ignorePatterns": ["vite.config.ts", "index.css", "tailwind.config.js", "postcss.config.js"],
     "rules": {
     }
 }
