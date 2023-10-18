@@ -1,4 +1,5 @@
 import Button from './components/Button/Button';
+import Card from './components/Card/Card';
 import './index.css';
 
 function App() {
@@ -6,7 +7,11 @@ function App() {
     console.log('hello world');
   };
 
-  return <Button title="show posts" onClick={showMessage} />;
+  return (
+    <Card>
+      <Button title="show posts" onClick={showMessage} />
+    </Card>
+  );
 }
 
 export default App;
