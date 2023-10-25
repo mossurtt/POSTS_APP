@@ -36,8 +36,11 @@ module.exports = {
     ],
     "ignorePatterns": ["vite.config.ts", "index.css", "tailwind.config.js", "postcss.config.js"],
     "rules": {
+        "@typescript-eslint/no-shadow": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "react/jsx-props-no-spreading": "off"
+        "react/jsx-props-no-spreading": "off",
+        "react/no-array-index-key": "off",
+        "import/prefer-default-export": "off"
     }
 }

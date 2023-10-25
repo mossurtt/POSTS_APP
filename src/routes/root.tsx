@@ -8,7 +8,7 @@ function Root() {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-emerald-400">
       <div className="font-sans font-bold text-7xl text-white mb-4">HELLO</div>
-      <CustomLink to="/posts/">
+      <CustomLink to="/posts">
         <Button onClick={onClick} title="SHOW POSTS" />
       </CustomLink>
     </div>
