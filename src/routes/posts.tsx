@@ -1,4 +1,5 @@
 import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import Post from '../components/Post/Post';
 import { posts } from '../posts';
 
@@ -12,7 +13,7 @@ function Posts() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#82d6ca]">
       <Header />
       <div>
         {posts.map((post, index) => (
@@ -27,9 +28,7 @@ function Posts() {
           />
         ))}
       </div>
-      <footer className="bg-blue-500 text-sm p-2 mt-8 text-slate-100">
-        <p>&copy; 2023 POSTS-APP</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
