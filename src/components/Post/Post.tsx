@@ -4,6 +4,7 @@ import { useState } from 'react';
 import PostProps from './post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
+import Rating from '../Rating/Rating';
 
 function Post({
   title,
@@ -41,11 +42,10 @@ function Post({
   return (
     <div className="flex items-center justify-center p-4">
       <div className="w-3/4 border rounded-lg p-4 m-4 flex flex-col relative bg-slate-50">
-        <div
-          className={`rounded-full absolute -top-5 -right-5 pt-2 h-10 w-10 ${averageScoreColor} text-center `}
-        >
-          <div className="text-white font-semibold">{averageScore}</div>
-        </div>
+        <Rating
+          averageScore={averageScore}
+          averageScoreColor={averageScoreColor}
+        />
         <div className="flex justify-between">
           <div className="flex items-center">
             <Avatar src={avatarUrl} alt="avatar" size="48px" />
