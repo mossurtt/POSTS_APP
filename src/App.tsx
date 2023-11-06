@@ -1,12 +1,9 @@
 import Button from './components/Button/Button';
+import Card from './components/Card/Card';
 import Post from './components/Post/Post';
 import './index.css';
 
 function App() {
-  const showMessage = () => {
-    console.log('hello world');
-  };
-
   const onEdit = () => {
     console.log('edit button clicked');
   };
@@ -17,7 +14,6 @@ function App() {
 
   return (
     <>
-      <Button title="show posts" onClick={showMessage} />
       <Post
         title="Some title"
         avatarUrl="https://cdn-icons-png.flaticon.com/512/3607/3607444.png"
