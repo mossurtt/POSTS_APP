@@ -1,4 +1,4 @@
-import { posts } from '../posts';
+import { posts } from '../constants/posts';
 import Post from '../components/Post/Post';
 import { useScore } from '../context/ScoreContext';
 import Header from '../components/Header/Header';

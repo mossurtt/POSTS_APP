@@ -1,7 +1,7 @@
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Post from '../components/Post/Post';
-import { posts } from '../posts';
+import { posts } from '../constants/posts';
 
 function Posts() {
   const onEdit = () => {
