@@ -1,31 +1,61 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
 import PostProps from './post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
 import Rating from '../Rating/Rating';
+import { useScore } from '../../context/ScoreContext';
 
 function Post({
+  id,
   title,
   avatarUrl,
   date,
   content,
   onEdit,
   onDelete,
+  canRate,
 }: PostProps) {
-  const [posScore, setPosScore] = useState<number>(0);
-  const [negScore, setNegScore] = useState<number>(0);
+  const { scores, addScore, removeScore } = useScore();
+  const [ratedPos, setRatedPos] = useState(false);
+  const [ratedNeg, setRatedNeg] = useState(false);
+
+  const postScores = scores[id] || { posScore: 0, negScore: 0 };
 
   const handlePosScoreClick = (): void => {
-    setPosScore(posScore + 1);
+    if (canRate) {
+      if (!ratedPos) {
+        addScore(id, true);
+        setRatedPos(true);
+        if (ratedNeg) {
+          removeScore(id, false);
+          setRatedNeg(false);
+        }
+      } else {
+        removeScore(id, true);
+        setRatedPos(false);
+      }
+    }
   };
 
-  const handleNegScoreClick = (): void => {
-    setNegScore(negScore + 1);
+  const handleNegScoreClick = () => {
+    if (canRate) {
+      if (!ratedNeg) {
+        addScore(id, false);
+        setRatedNeg(true);
+        if (ratedPos) {
+          removeScore(id, true);
+          setRatedPos(false);
+        }
+      } else {
+        removeScore(id, false);
+        setRatedNeg(false);
+      }
+    }
   };
 
-  const getAverageScore = (posScore: number, negScore: number): number => posScore - negScore;
+  const getAverageScore = (): number => postScores.posScore - postScores.negScore;
   const getAverageScoreColor = (averageScore: number): string => {
     if (averageScore > 0) {
       return 'bg-green-400';
@@ -36,7 +66,7 @@ function Post({
     return 'bg-red-800';
   };
 
-  const averageScore = getAverageScore(posScore, negScore);
+  const averageScore = getAverageScore();
   const averageScoreColor = getAverageScoreColor(averageScore);
 
   return (
@@ -61,13 +91,13 @@ function Post({
               className="text-green-400 cursor-pointer text-xl"
               onClick={handlePosScoreClick}
             />
-            <span>{posScore}</span>
+            <span>{postScores.posScore}</span>
             <FontAwesomeIcon
               icon={faMinusSquare}
               className="text-red-500 mr-2 cursor-pointer text-xl"
               onClick={handleNegScoreClick}
             />
-            <span>{negScore}</span>
+            <span>{postScores.negScore}</span>
           </div>
           <div className="mt-4 flex justify-end space-x-2">
             <Button
