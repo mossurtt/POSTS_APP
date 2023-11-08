@@ -24,6 +24,8 @@ export function ScoreProvider({ children }: ScoreProviderProps) {
   const [scores, setScores] = useState<Scores>({});
 
   const addScore = (postId: number, isPositive: boolean) => {
+    console.log('postId', postId);
+    console.log('isPositive', isPositive);
     setScores((prevScores) => {
       const newScores = prevScores;
       if (!newScores[postId]) {

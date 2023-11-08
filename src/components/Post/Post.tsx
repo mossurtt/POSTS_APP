@@ -24,10 +24,13 @@ function Post({
   const postScores = scores[id] || { posScore: 0, negScore: 0 };
 
   const handlePosScoreClick = (): void => {
+    console.log(postScores);
     if (canRate) {
       if (!ratedPos) {
+        console.log('test');
         addScore(id, true);
         setRatedPos(true);
+
         if (ratedNeg) {
           removeScore(id, false);
           setRatedNeg(false);
