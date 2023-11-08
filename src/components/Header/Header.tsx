@@ -4,7 +4,7 @@ import CustomLink from '../Link/Link';
 
 function Header() {
   return (
-    <header className="bg-blue-500 p-4 mb-10 flex justify-between items-center">
+    <header className="bg-[#2153a0] p-4 mb-10 flex justify-between items-center">
       <div>
         <img src="../assets/05_app_icon.png" alt="Logo" />
       </div>
