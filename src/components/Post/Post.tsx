@@ -3,6 +3,7 @@ import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import PostProps from './post.types';
 import Button from '../Button/Button';
+import Avatar from '../Avatar/Avatar';
 
 function Post({
   title,
@@ -43,9 +44,7 @@ function Post({
         </div>
         <div className="flex justify-between">
           <div className="flex items-center">
-            <div className="w-12 h-12 rounded-full overflow-hidden">
-              <img src={avatarUrl} alt="Avatar" className="w-full h-full" />
-            </div>
+            <Avatar src={avatarUrl} alt="avatar" size="48px" />
             <div className="ml-4 text-base font-semibold">{title}</div>
           </div>
           <div className="text-gray-500 text-sm self-center">{date}</div>
