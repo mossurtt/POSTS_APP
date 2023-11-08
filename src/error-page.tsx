@@ -7,7 +7,6 @@ interface ErrorProps {
 
 function ErrorPage() {
   const error: ErrorProps = useRouteError() as ErrorProps;
-  console.error(error);
 
   return (
     <div

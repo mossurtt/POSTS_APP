@@ -15,13 +15,9 @@ function Post({
   const [posScore, setPosScore] = useState<number>(0);
   const [negScore, setNegScore] = useState<number>(0);
 
-  const handlePosScoreClick = (): void => {
-    setPosScore(posScore + 1);
-  };
+  const handlePosScoreClick = (): void => setPosScore(posScore + 1);
 
-  const handleNegScoreClick = (): void => {
-    setNegScore(negScore + 1);
-  };
+  const handleNegScoreClick = (): void => setNegScore(negScore + 1);
 
   const getAverageScore = (posScore: number, negScore: number): number => posScore - negScore;
   const getAverageScoreColor = (averageScore: number): string => {
