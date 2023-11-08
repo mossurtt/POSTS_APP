@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CustomLink from '../components/Link/Link';
 import Post from '../components/Post/Post';
-import { posts } from '../posts';
+import { posts } from '../constants/posts';
 
 function Posts() {
   const onEdit = () => {
