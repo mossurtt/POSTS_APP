@@ -34,8 +34,8 @@ function Post({
   const averageScoreColor = getAverageScoreColor(averageScore);
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="w-1/3 border rounded-lg p-4 m-4 flex flex-col relative">
+    <div className="flex items-center justify-center p-4">
+      <div className="w-3/4 border rounded-lg p-4 m-4 flex flex-col relative bg-slate-50">
         <div
           className={`rounded-full absolute -top-5 -right-5 pt-2 h-10 w-10 ${averageScoreColor} text-center `}
         >
@@ -46,11 +46,11 @@ function Post({
             <div className="w-12 h-12 rounded-full overflow-hidden">
               <img src={avatarUrl} alt="Avatar" className="w-full h-full" />
             </div>
-            <div className="ml-4 text-lg font-semibold">{title}</div>
+            <div className="ml-4 text-base font-semibold">{title}</div>
           </div>
           <div className="text-gray-500 text-sm self-center">{date}</div>
         </div>
-        <div className="mt-4 flex-grow">{content}</div>
+        <div className="mt-4 text-xs flex-grow">{content}</div>
         <div className="flex justify-between items-end mt-4">
           <div className="flex items-center space-x-2">
             <FontAwesomeIcon
