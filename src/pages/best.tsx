@@ -1,8 +1,8 @@
 import Post from '../components/Post/Post';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import { useScore } from '../context/ScoreContext';
-import { usePost } from '../context/PostContext';
+import { useScore } from '../contexts/ScoreContext';
+import { usePost } from '../contexts/PostContext';
 
 function Best() {
   const onEdit = () => {

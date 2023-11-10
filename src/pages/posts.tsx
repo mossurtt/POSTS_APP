@@ -1,8 +1,7 @@
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import PostList from '../components/PostList/PostList';
-import { usePost } from '../context/PostContext';
-// import { posts } from '../constants/posts';
+import { usePost } from '../contexts/PostContext';
 
 function Posts() {
   const onEdit = () => {
@@ -18,7 +17,9 @@ function Posts() {
   return (
     <div className="min-h-screen bg-[#82d6ca]">
       <Header />
-      {posts && <PostList posts={posts} onEdit={onEdit} onDelete={onDelete} />}
+      {!!posts?.length && (
+        <PostList posts={posts} onEdit={onEdit} onDelete={onDelete} />
+      )}
       <Footer />
     </div>
   );

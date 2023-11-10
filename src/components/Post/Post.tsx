@@ -5,7 +5,7 @@ import PostProps from './post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
 import Rating from '../Rating/Rating';
-import { useScore } from '../../context/ScoreContext';
+import { useScore } from '../../contexts/ScoreContext';
 
 function Post({
   id,

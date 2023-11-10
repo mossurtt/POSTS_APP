@@ -21,7 +21,7 @@ type PostProviderProps = {
 };
 
 export function PostProvider({ children }: PostProviderProps) {
-  const [posts, setPosts] = useState<PostProps[] | null>(null);
+  const [posts, setPosts] = useState<PostProps[]>([]);
 
   useEffect(() => {
     fetch('http://localhost:8000/posts')
@@ -32,13 +32,7 @@ export function PostProvider({ children }: PostProviderProps) {
       .catch((error) => console.error('Error fetching posts:', error));
   }, []);
 
-  const contextValue = useMemo(() => {
-    if (posts === null) {
-      return { posts: [] };
-    }
-
-    return { posts };
-  }, [posts]);
+  const contextValue = useMemo(() => ({ posts }), [posts]);
 
   return (
     <PostContext.Provider value={contextValue}>{children}</PostContext.Provider>
