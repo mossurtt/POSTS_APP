@@ -2,11 +2,14 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import RootNavigator from './navigation/RootNavigator';
 import { ScoreProvider } from './context/ScoreContext';
+import { PostProvider } from './context/PostContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ScoreProvider>
-      <RootNavigator />
-    </ScoreProvider>
+    <PostProvider>
+      <ScoreProvider>
+        <RootNavigator />
+      </ScoreProvider>
+    </PostProvider>
   </React.StrictMode>,
 );

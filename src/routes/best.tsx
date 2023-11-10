@@ -1,8 +1,8 @@
-import { posts } from '../constants/posts';
 import Post from '../components/Post/Post';
-import { useScore } from '../context/ScoreContext';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import { useScore } from '../context/ScoreContext';
+import { usePost } from '../context/PostContext';
 
 function Best() {
   const onEdit = () => {
@@ -14,8 +14,9 @@ function Best() {
   };
 
   const { scores } = useScore();
+  const { posts } = usePost();
 
-  const sortedPosts = [...posts];
+  const sortedPosts = [...(posts || [])];
 
   sortedPosts.sort((postA, postB) => {
     const scoreA = (scores[postA.id] || { posScore: 0, negScore: 0 }).posScore;
