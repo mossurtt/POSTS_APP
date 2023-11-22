@@ -25,25 +25,23 @@ function Best() {
   });
 
   return (
-    <>
+    <div className="min-h-screen bg-[#82d6ca]">
       <Header />
-      <div>
-        {sortedPosts.map((post, index) => (
-          <Post
-            key={index}
-            id={post.id}
-            title={post.title}
-            avatarUrl="https://cdn-icons-png.flaticon.com/512/3607/3607444.png"
-            content={post.content}
-            date={post.date}
-            onEdit={onEdit}
-            onDelete={onDelete}
-            canRate={false}
-          />
-        ))}
-      </div>
+      {sortedPosts.map((post, index) => (
+        <Post
+          key={index}
+          id={post.id}
+          title={post.title}
+          avatarUrl="https://cdn-icons-png.flaticon.com/512/3607/3607444.png"
+          content={post.content}
+          date={post.date}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          canRate={false}
+        />
+      ))}
       <Footer />
-    </>
+    </div>
   );
 }
 

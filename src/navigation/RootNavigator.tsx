@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PATHS } from '../constants/paths';
 import Root from '../pages/root';
 import Posts from '../pages/posts';
-import ErrorPage from '../error-page';
+import ErrorPage from '../pages/error-page';
 import Best from '../pages/best';
 
 function RootNavigator() {

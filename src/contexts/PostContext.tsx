@@ -24,12 +24,17 @@ export function PostProvider({ children }: PostProviderProps) {
   const [posts, setPosts] = useState<PostProps[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:8000/posts')
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('http://localhost:8000/posts');
+        const data = await res.json();
         setPosts(data);
-      })
-      .catch((error) => console.error('Error fetching posts:', error));
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const contextValue = useMemo(() => ({ posts }), [posts]);
