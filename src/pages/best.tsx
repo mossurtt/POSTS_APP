@@ -1,8 +1,8 @@
-import { posts } from '../constants/posts';
 import Post from '../components/Post/Post';
-import { useScore } from '../context/ScoreContext';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import { useScore } from '../contexts/ScoreContext';
+import { usePost } from '../contexts/PostContext';
 
 function Best() {
   const onEdit = () => {
@@ -14,8 +14,9 @@ function Best() {
   };
 
   const { scores } = useScore();
+  const { posts } = usePost();
 
-  const sortedPosts = [...posts];
+  const sortedPosts = [...(posts || [])];
 
   sortedPosts.sort((postA, postB) => {
     const scoreA = (scores[postA.id] || { posScore: 0, negScore: 0 }).posScore;
@@ -24,25 +25,23 @@ function Best() {
   });
 
   return (
-    <>
+    <div className="min-h-screen bg-[#82d6ca]">
       <Header />
-      <div>
-        {sortedPosts.map((post, index) => (
-          <Post
-            key={index}
-            id={post.id}
-            title={post.title}
-            avatarUrl="https://cdn-icons-png.flaticon.com/512/3607/3607444.png"
-            content={post.content}
-            date={post.date}
-            onEdit={onEdit}
-            onDelete={onDelete}
-            canRate={false}
-          />
-        ))}
-      </div>
+      {sortedPosts.map((post, index) => (
+        <Post
+          key={index}
+          id={post.id}
+          title={post.title}
+          avatarUrl="https://cdn-icons-png.flaticon.com/512/3607/3607444.png"
+          content={post.content}
+          date={post.date}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          canRate={false}
+        />
+      ))}
       <Footer />
-    </>
+    </div>
   );
 }
 

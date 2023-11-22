@@ -5,7 +5,7 @@ import PostProps from './post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
 import Rating from '../Rating/Rating';
-import { useScore } from '../../context/ScoreContext';
+import { useScore } from '../../contexts/ScoreContext';
 
 function Post({
   id,
@@ -24,10 +24,8 @@ function Post({
   const postScores = scores[id] || { posScore: 0, negScore: 0 };
 
   const handlePosScoreClick = (): void => {
-    console.log(postScores);
     if (canRate) {
       if (!ratedPos) {
-        console.log('test');
         addScore(id, true);
         setRatedPos(true);
 

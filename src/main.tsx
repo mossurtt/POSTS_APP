@@ -1,12 +1,4 @@
-import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
-import RootNavigator from './navigation/RootNavigator';
-import { ScoreProvider } from './context/ScoreContext';
+import App from './App';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ScoreProvider>
-      <RootNavigator />
-    </ScoreProvider>
-  </React.StrictMode>,
-);
+ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
