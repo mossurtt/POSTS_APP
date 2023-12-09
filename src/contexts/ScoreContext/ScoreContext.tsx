@@ -1,24 +1,17 @@
 import {
-  ReactNode, createContext, useContext, useMemo, useState,
+  createContext, useContext, useMemo, useState,
 } from 'react';
-
-type Scores = { [postId: number]: { posScore: number; negScore: number } };
-
-type ScoreContextType = {
-  scores: Scores;
-  addScore: (postId: number, isPositive: boolean) => void;
-  removeScore: (postId: number, isPositive: boolean) => void;
-};
+import {
+  ScoreContextType,
+  ScoreProviderProps,
+  Scores,
+} from './ScoreContext.types';
 
 const ScoreContext = createContext<ScoreContextType>({
   scores: {},
   addScore() {},
   removeScore() {},
 });
-
-type ScoreProviderProps = {
-  children: ReactNode;
-};
 
 export function ScoreProvider({ children }: ScoreProviderProps) {
   const [scores, setScores] = useState<Scores>({});

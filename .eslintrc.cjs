@@ -44,5 +44,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/destructuring-assignment': 'off',
     'no-console': 'off',
+    'consistent-return': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };

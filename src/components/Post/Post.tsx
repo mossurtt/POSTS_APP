@@ -1,57 +1,41 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import PostProps from './post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
 import Rating from '../Rating/Rating';
-import { useScore } from '../../contexts/ScoreContext';
+import { useScore } from '../../contexts/ScoreContext/ScoreContext';
+import { usePost } from '../../contexts/PostContext/PostContext';
+import { PATHS } from '../../constants/paths';
 
-function Post({
-  id,
-  title,
-  avatarUrl,
-  date,
-  content,
-  onEdit,
-  onDelete,
-  canRate,
-}: PostProps) {
+function Post(props: PostProps) {
+  const {
+    id, title, avatarUrl, date, content, canRate, editable,
+  } = props;
   const { scores, addScore, removeScore } = useScore();
-  const [ratedPos, setRatedPos] = useState(false);
-  const [ratedNeg, setRatedNeg] = useState(false);
+  const { updatePost, setSelectedPost } = usePost();
+  const [ratedPos, setRatedPos] = useState<boolean>(false);
+  const [ratedNeg, setRatedNeg] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const postScores = scores[id] || { posScore: 0, negScore: 0 };
 
-  const handlePosScoreClick = (): void => {
+  const handleScoreClick = (isAdd: boolean): void => {
     if (canRate) {
       if (!ratedPos) {
-        addScore(id, true);
-        setRatedPos(true);
+        addScore(id, isAdd);
+        setRatedPos(isAdd);
 
         if (ratedNeg) {
-          removeScore(id, false);
-          setRatedNeg(false);
+          removeScore(id, !isAdd);
+          setRatedNeg(!isAdd);
         }
       } else {
-        removeScore(id, true);
-        setRatedPos(false);
-      }
-    }
-  };
-
-  const handleNegScoreClick = () => {
-    if (canRate) {
-      if (!ratedNeg) {
-        addScore(id, false);
-        setRatedNeg(true);
-        if (ratedPos) {
-          removeScore(id, true);
-          setRatedPos(false);
-        }
-      } else {
-        removeScore(id, false);
-        setRatedNeg(false);
+        removeScore(id, isAdd);
+        setRatedPos(!isAdd);
       }
     }
   };
@@ -70,6 +54,44 @@ function Post({
   const averageScore = getAverageScore();
   const averageScoreColor = getAverageScoreColor(averageScore);
 
+  function onDelete(): void {
+    throw new Error('Function not implemented.');
+  }
+
+  const handleOnEdit = () => {
+    setSelectedPost(props);
+    navigate(PATHS.POST_DETAILS);
+  };
+
+  const { register, handleSubmit, formState } = useForm({
+    defaultValues: { title, content },
+  });
+
+  const { errors } = formState;
+
+  // const onSubmit: SubmitHandler<PostFormData> = ({content,title}) => {
+  //   try {
+  //     updatePost({
+  //       ...props,
+  //       ...validatePostFormData({content,title})
+  //   });
+  //   } catch (error) {
+  //     console.error('Validation Error:', (error as Error).message);
+  //   }
+  // };
+
+  const handleOnSave = (post: Pick<PostProps, 'title' | 'content'>) => {
+    updatePost({ ...props, ...post });
+    navigate(-1);
+  };
+
+  const handleOnCancel = () => {
+    navigate(-1);
+  };
+
+  const titleError = errors?.title || { message: '' };
+  const contentError = errors?.content || { message: '' };
+
   return (
     <div className="flex items-center justify-center p-4">
       <div className="w-3/4 border rounded-lg p-4 m-4 flex flex-col relative bg-slate-50">
@@ -80,37 +102,80 @@ function Post({
         <div className="flex justify-between">
           <div className="flex items-center">
             <Avatar src={avatarUrl} alt="avatar" size="48px" />
-            <div className="ml-4 text-base font-semibold">{title}</div>
+            {editable ? (
+              <>
+                <input
+                  {...register('title')}
+                  id="title"
+                  className="m-2 p-2 border rounded-md w-full text-base font-medium"
+                />
+                {titleError && (
+                  <span className="text-red-500">{titleError.message}</span>
+                )}
+              </>
+            ) : (
+              <div className="ml-4 text-base font-semibold">{title}</div>
+            )}
           </div>
           <div className="text-gray-500 text-sm self-center">{date}</div>
         </div>
-        <div className="mt-4 text-xs flex-grow">{content}</div>
+        {editable ? (
+          <>
+            <textarea
+              {...register('content')}
+              id="content"
+              className="mt-1 p-2 border rounded-md w-full text-xs"
+            />
+            {contentError && (
+              <span className="text-red-500">{contentError.message}</span>
+            )}
+          </>
+        ) : (
+          <div className="mt-4 text-xs flex-grow">{content}</div>
+        )}
         <div className="flex justify-between items-end mt-4">
           <div className="flex items-center space-x-2">
             <FontAwesomeIcon
               icon={faPlusSquare}
               className="text-green-400 cursor-pointer text-xl"
-              onClick={handlePosScoreClick}
+              onClick={() => handleScoreClick(true)}
             />
             <span>{postScores.posScore}</span>
             <FontAwesomeIcon
               icon={faMinusSquare}
               className="text-red-500 mr-2 cursor-pointer text-xl"
-              onClick={handleNegScoreClick}
+              onClick={() => handleScoreClick(false)}
             />
             <span>{postScores.negScore}</span>
           </div>
           <div className="mt-4 flex justify-end space-x-2">
-            <Button
-              onClick={onEdit}
-              className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded"
-              title="Edit"
-            />
-            <Button
-              onClick={onDelete}
-              className="text-red hover:bg-red-300 px-3 py-1 rounded"
-              title="Delete"
-            />
+            {editable ? (
+              <div className="flex space-x-2">
+                <Button
+                  onClick={handleSubmit(handleOnSave)}
+                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+                  title="Save"
+                />
+                <Button
+                  onClick={handleOnCancel}
+                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+                  title="Cancel"
+                />
+              </div>
+            ) : (
+              <div>
+                <Button
+                  onClick={handleOnEdit}
+                  className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded"
+                  title="Edit"
+                />
+                <Button
+                  onClick={editable ? onDelete : onDelete}
+                  className="text-red hover:bg-red-300 px-3 py-1 rounded"
+                  title="Delete"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

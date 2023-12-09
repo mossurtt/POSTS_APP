@@ -4,10 +4,8 @@ type PostProps = {
   avatarUrl: string;
   date: string;
   content: string;
-  className?: string;
-  onEdit: () => void;
-  onDelete: () => void;
   canRate: boolean;
+  editable: boolean;
 };
 
 export default PostProps;

@@ -1,8 +1,8 @@
 import './index.css';
 import * as React from 'react';
 import RootNavigator from './navigation/RootNavigator';
-import { ScoreProvider } from './contexts/ScoreContext';
-import { PostProvider } from './contexts/PostContext';
+import { ScoreProvider } from './contexts/ScoreContext/ScoreContext';
+import { PostProvider } from './contexts/PostContext/PostContext';
 
 function App() {
   return (
