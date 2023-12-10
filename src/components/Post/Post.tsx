@@ -54,9 +54,9 @@ function Post(props: PostProps) {
   const averageScore = getAverageScore();
   const averageScoreColor = getAverageScoreColor(averageScore);
 
-  function onDelete(): void {
+  const onDelete = () => {
     throw new Error('Function not implemented.');
-  }
+  };
 
   const handleOnEdit = () => {
     setSelectedPost(props);
@@ -170,7 +170,7 @@ function Post(props: PostProps) {
                   title="Edit"
                 />
                 <Button
-                  onClick={editable ? onDelete : onDelete}
+                  onClick={onDelete}
                   className="text-red hover:bg-red-300 px-3 py-1 rounded"
                   title="Delete"
                 />
