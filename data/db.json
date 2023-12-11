@@ -35,10 +35,10 @@
     },
     {
       "id": 5,
-      "title": "Mastering2322 CSS Fle22xbox Layout",
+      "title": "Mastering CSS Fle22xbox Layout",
       "content": "Learn how to create flexible and responsive layouts with CSS Flexbox.",
       "date": "2023-10-19",
-      "canRate": true,
+      "canRate": false,
       "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
       "editable": true
     },

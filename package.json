@@ -13,6 +13,7 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "body-scroll-lock": "^4.0.0-beta.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "i18next": "^23.6.0",
     "react": "^18.2.0",
