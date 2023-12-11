@@ -1,6 +1,7 @@
 export const PATHS = {
   ROOT: '/',
   POSTS: '/posts',
-  ERROR: '*',
   BEST: '/best',
+  ERROR: '*',
+  POST_DETAILS: '/post-details',
 };
