@@ -10,6 +10,7 @@ import Rating from '../Rating/Rating';
 import { useScore } from '../../contexts/ScoreContext/ScoreContext';
 import { usePost } from '../../contexts/PostContext/PostContext';
 import { PATHS } from '../../constants/paths';
+import BaseModal from '../Modals/BaseModal/BaseModal';
 
 function Post(props: PostProps) {
   const {
@@ -17,6 +18,7 @@ function Post(props: PostProps) {
   } = props;
   const { scores, addScore, removeScore } = useScore();
   const { updatePost, setSelectedPost } = usePost();
+  const [showModal, setShowModal] = useState(false);
   const [ratedPos, setRatedPos] = useState<boolean>(false);
   const [ratedNeg, setRatedNeg] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -55,7 +57,7 @@ function Post(props: PostProps) {
   const averageScoreColor = getAverageScoreColor(averageScore);
 
   const onDelete = () => {
-    throw new Error('Function not implemented.');
+    setShowModal(true);
   };
 
   const handleOnEdit = () => {
@@ -149,6 +151,11 @@ function Post(props: PostProps) {
                   title="Delete"
                 />
               </div>
+            )}
+            {showModal && (
+              <BaseModal>
+                <span>Are you sure?</span>
+              </BaseModal>
             )}
           </div>
         </div>
