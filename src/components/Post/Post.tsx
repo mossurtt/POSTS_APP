@@ -63,22 +63,9 @@ function Post(props: PostProps) {
     navigate(PATHS.POST_DETAILS);
   };
 
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: { title, content },
   });
-
-  const { errors } = formState;
-
-  // const onSubmit: SubmitHandler<PostFormData> = ({content,title}) => {
-  //   try {
-  //     updatePost({
-  //       ...props,
-  //       ...validatePostFormData({content,title})
-  //   });
-  //   } catch (error) {
-  //     console.error('Validation Error:', (error as Error).message);
-  //   }
-  // };
 
   const handleOnSave = (post: Pick<PostProps, 'title' | 'content'>) => {
     updatePost({ ...props, ...post });
@@ -88,9 +75,6 @@ function Post(props: PostProps) {
   const handleOnCancel = () => {
     navigate(-1);
   };
-
-  const titleError = errors?.title || { message: '' };
-  const contentError = errors?.content || { message: '' };
 
   return (
     <div className="flex items-center justify-center p-4">
@@ -103,16 +87,11 @@ function Post(props: PostProps) {
           <div className="flex items-center">
             <Avatar src={avatarUrl} alt="avatar" size="48px" />
             {editable ? (
-              <>
-                <input
-                  {...register('title')}
-                  id="title"
-                  className="m-2 p-2 border rounded-md w-full text-base font-medium"
-                />
-                {titleError && (
-                  <span className="text-red-500">{titleError.message}</span>
-                )}
-              </>
+              <input
+                {...register('title')}
+                id="title"
+                className="m-2 p-2 border rounded-md w-full text-base font-medium"
+              />
             ) : (
               <div className="ml-4 text-base font-semibold">{title}</div>
             )}
@@ -120,16 +99,11 @@ function Post(props: PostProps) {
           <div className="text-gray-500 text-sm self-center">{date}</div>
         </div>
         {editable ? (
-          <>
-            <textarea
-              {...register('content')}
-              id="content"
-              className="mt-1 p-2 border rounded-md w-full text-xs"
-            />
-            {contentError && (
-              <span className="text-red-500">{contentError.message}</span>
-            )}
-          </>
+          <textarea
+            {...register('content')}
+            id="content"
+            className="mt-1 p-2 border rounded-md w-full text-xs"
+          />
         ) : (
           <div className="mt-4 text-xs flex-grow">{content}</div>
         )}
