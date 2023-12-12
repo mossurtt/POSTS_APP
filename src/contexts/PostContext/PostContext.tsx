@@ -16,7 +16,6 @@ export function PostProvider({ children }: PostProviderProps) {
       const res = await fetch('http://localhost:8000/posts');
       const data = await res.json();
       setPosts(data);
-      console.log(data);
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
@@ -58,7 +57,6 @@ export function PostProvider({ children }: PostProviderProps) {
       });
       if (res.ok) {
         setPosts(posts.filter((post) => post.id !== deletedPost.id));
-        console.log(posts);
       } else throw new Error('Invalid response');
     } catch (e) {
       console.error(e);

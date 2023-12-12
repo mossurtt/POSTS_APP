@@ -7,7 +7,6 @@ function DeleteModal() {
 
   const onSubmit = () => {
     if (selectedPost) deletePost(selectedPost);
-    else console.log('');
     setShowModal(false);
   };
 
