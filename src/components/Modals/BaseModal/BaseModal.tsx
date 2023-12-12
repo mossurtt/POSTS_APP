@@ -18,7 +18,7 @@ const BaseModal = ({ children }: BaseModalProps) => {
         {children}
       </div>
     </div>,
-    document.querySelector('#modal')!,
+    document.querySelector('#modal') as HTMLElement,
   );
 };
 export default BaseModal;
