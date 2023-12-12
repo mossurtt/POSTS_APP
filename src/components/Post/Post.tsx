@@ -18,7 +18,7 @@ function Post(props: PostProps) {
   } = props;
   const { scores, addScore, removeScore } = useScore();
   const { updatePost, setSelectedPost } = usePost();
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [ratedPos, setRatedPos] = useState<boolean>(false);
   const [ratedNeg, setRatedNeg] = useState<boolean>(false);
   const navigate = useNavigate();
