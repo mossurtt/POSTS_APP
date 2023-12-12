@@ -10,15 +10,14 @@ import Rating from '../Rating/Rating';
 import { useScore } from '../../contexts/ScoreContext/ScoreContext';
 import { usePost } from '../../contexts/PostContext/PostContext';
 import { PATHS } from '../../constants/paths';
-import BaseModal from '../Modals/BaseModal/BaseModal';
 
 function Post(props: PostProps) {
   const {
     id, title, avatarUrl, date, content, canRate, editable,
   } = props;
   const { scores, addScore, removeScore } = useScore();
-  const { updatePost, setSelectedPost } = usePost();
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const { updatePost, setSelectedPost, setShowModal } = usePost();
+
   const [ratedPos, setRatedPos] = useState<boolean>(false);
   const [ratedNeg, setRatedNeg] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -58,6 +57,7 @@ function Post(props: PostProps) {
 
   const onDelete = () => {
     setShowModal(true);
+    setSelectedPost(props);
   };
 
   const handleOnEdit = () => {
@@ -151,11 +151,6 @@ function Post(props: PostProps) {
                   title="Delete"
                 />
               </div>
-            )}
-            {showModal && (
-              <BaseModal>
-                <span>Are you sure?</span>
-              </BaseModal>
             )}
           </div>
         </div>
