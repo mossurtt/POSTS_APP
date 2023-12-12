@@ -6,9 +6,7 @@ function Posts() {
   const { posts } = usePost();
 
   return (
-    <div className="min-h-screen bg-[#82d6ca]">
-      <PageWrapper>{!!posts?.length && <PostList posts={posts} />}</PageWrapper>
-    </div>
+    <PageWrapper>{!!posts?.length && <PostList posts={posts} />}</PageWrapper>
   );
 }
 

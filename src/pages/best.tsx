@@ -1,17 +1,9 @@
-import Post from '../components/Post/Post';
 import { useScore } from '../contexts/ScoreContext/ScoreContext';
 import { usePost } from '../contexts/PostContext/PostContext';
 import PageWrapper from '../components/PageWrapper/PageWrapper';
+import PostList from '../components/PostList/PostList';
 
 function Best() {
-  const onEdit = () => {
-    console.log('edit button clicked');
-  };
-
-  const onDelete = () => {
-    console.log('delete button clicked');
-  };
-
   const { scores } = useScore();
   const { posts } = usePost();
 
@@ -24,23 +16,9 @@ function Best() {
   });
 
   return (
-    <div className="min-h-screen bg-[#82d6ca]">
-      <PageWrapper>
-        {sortedPosts.map((post, index) => (
-          <Post
-            key={index}
-            id={post.id}
-            title={post.title}
-            avatarUrl="https://cdn-icons-png.flaticon.com/512/3607/3607444.png"
-            content={post.content}
-            date={post.date}
-            onEdit={onEdit}
-            onDelete={onDelete}
-            canRate={false}
-          />
-        ))}
-      </PageWrapper>
-    </div>
+    <PageWrapper>
+      {!!posts?.length && <PostList posts={sortedPosts} />}
+    </PageWrapper>
   );
 }
 

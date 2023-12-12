@@ -1,7 +1,10 @@
+import { usePost } from '../../contexts/PostContext/PostContext';
+import DeleteModal from '../Modals/DeleteModal/DeleteModal';
 import Post from '../Post/Post';
 import PostListProps from './postlist.types';
 
 function PostList({ posts }: PostListProps) {
+  const { showModal } = usePost();
   return (
     <div>
       {posts.map((post) => (
@@ -13,6 +16,7 @@ function PostList({ posts }: PostListProps) {
           editable={false}
         />
       ))}
+      {showModal && <DeleteModal />}
     </div>
   );
 }

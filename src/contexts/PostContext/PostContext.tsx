@@ -9,12 +9,14 @@ const PostContext = createContext<PostContextType>({} as PostContextType);
 export function PostProvider({ children }: PostProviderProps) {
   const [posts, setPosts] = useState<PostProps[]>([]);
   const [selectedPost, setSelectedPost] = useState<PostProps | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const fetchData = async () => {
     try {
       const res = await fetch('http://localhost:8000/posts');
       const data = await res.json();
       setPosts(data);
+      console.log(data);
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
@@ -47,6 +49,22 @@ export function PostProvider({ children }: PostProviderProps) {
     }
   };
 
+  const deletePost = async (deletedPost: PostProps): Promise<void> => {
+    try {
+      const res = await fetch(`http://localhost:8000/posts/${deletedPost.id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(deletedPost),
+      });
+      if (res.ok) {
+        setPosts(posts.filter((post) => post.id !== deletedPost.id));
+        console.log(posts);
+      } else throw new Error('Invalid response');
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -55,10 +73,13 @@ export function PostProvider({ children }: PostProviderProps) {
     () => ({
       posts,
       selectedPost,
+      showModal,
+      setShowModal,
       updatePost,
+      deletePost,
       setSelectedPost: (post) => setSelectedPost(post),
     }),
-    [updatePost, posts, selectedPost],
+    [updatePost, deletePost, posts, selectedPost, showModal, setShowModal],
   );
 
   return (
