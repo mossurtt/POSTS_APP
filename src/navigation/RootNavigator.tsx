@@ -5,6 +5,7 @@ import Posts from '../pages/posts';
 import ErrorPage from '../pages/error-page';
 import Best from '../pages/best';
 import EditPage from '../pages/edit-page';
+import NewPost from '../pages/new-post';
 
 function RootNavigator() {
   return (
@@ -14,6 +15,7 @@ function RootNavigator() {
         <Route path={PATHS.POSTS} element={<Posts />} />
         <Route path={PATHS.POST_DETAILS} element={<EditPage />} />
         <Route path={PATHS.BEST} element={<Best />} />
+        <Route path={PATHS.NEW_POST} element={<NewPost />} />
         <Route path={PATHS.ERROR} element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

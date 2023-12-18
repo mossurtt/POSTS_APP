@@ -4,4 +4,5 @@ export const PATHS = {
   BEST: '/best',
   ERROR: '*',
   POST_DETAILS: '/post-details',
+  NEW_POST: '/new-post',
 };

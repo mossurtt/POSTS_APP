@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CustomLink from '../Link/Link';
 import logo from '../../assets/05_app_icon.png';
+import { PATHS } from '../../constants/paths';
 
 function Header() {
   return (
@@ -11,7 +12,7 @@ function Header() {
       </div>
       <div className="flex justify-center">
         <CustomLink
-          to="/posts"
+          to={PATHS.POSTS}
           style={{
             textDecoration:
               window.location.pathname === '/posts' ? 'underline' : 'none',
@@ -20,7 +21,7 @@ function Header() {
           Posts
         </CustomLink>
         <CustomLink
-          to="/best"
+          to={PATHS.BEST}
           style={{
             textDecoration:
               window.location.pathname === '/best' ? 'underline' : 'none',
@@ -28,7 +29,7 @@ function Header() {
         >
           Best
         </CustomLink>
-        <CustomLink to="/new-post">
+        <CustomLink to={PATHS.NEW_POST}>
           <FontAwesomeIcon icon={faPlus} />
         </CustomLink>
       </div>
