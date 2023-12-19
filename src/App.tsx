@@ -3,15 +3,18 @@ import * as React from 'react';
 import RootNavigator from './navigation/RootNavigator';
 import { ScoreProvider } from './contexts/ScoreContext/ScoreContext';
 import { PostProvider } from './contexts/PostContext/PostContext';
+import { ModalProvider } from './contexts/ModalContext/ModalContext';
 
 function App() {
   return (
     <React.StrictMode>
-      <PostProvider>
-        <ScoreProvider>
-          <RootNavigator />
-        </ScoreProvider>
-      </PostProvider>
+      <ModalProvider>
+        <PostProvider>
+          <ScoreProvider>
+            <RootNavigator />
+          </ScoreProvider>
+        </PostProvider>
+      </ModalProvider>
     </React.StrictMode>
   );
 }
