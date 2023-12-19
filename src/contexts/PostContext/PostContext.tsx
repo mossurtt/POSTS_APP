@@ -1,7 +1,7 @@
 import {
   createContext, useContext, useEffect, useMemo, useState,
 } from 'react';
-import PostProps from '../../components/Post/post.types';
+import PostProps from '../../components/Post/Post.types';
 import { PostContextType, PostProviderProps } from './PostContext.types';
 
 const PostContext = createContext<PostContextType>({} as PostContextType);

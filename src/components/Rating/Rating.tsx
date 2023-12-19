@@ -1,4 +1,4 @@
-import RatingProps from './rating.types';
+import RatingProps from './Rating.types';
 
 function Rating({ averageScore, averageScoreColor }: RatingProps) {
   return (
