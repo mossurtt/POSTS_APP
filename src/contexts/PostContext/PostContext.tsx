@@ -57,6 +57,7 @@ export function PostProvider({ children }: PostProviderProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(deletedPost),
       });
+
       if (res.ok) {
         setPosts(posts.filter((post) => post.id !== deletedPost.id));
       } else throw new Error('Invalid response');
@@ -96,6 +97,7 @@ export function PostProvider({ children }: PostProviderProps) {
     }
 
     validatePostFormData(recentlyCreatedPost);
+
     try {
       setPosts((prevState) => [...prevState, recentlyCreatedPost]);
     } catch (e) {
