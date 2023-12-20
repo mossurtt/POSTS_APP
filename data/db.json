@@ -30,10 +30,12 @@
     },
     {
       "title": "Віка",
-      "content": "сама лучя",
+      "content": "сама лучяdcdcdc",
       "createdAt": "2023-12-18T18:19:17.844Z",
       "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 21
+      "id": 21,
+      "canRate": false,
+      "editable": true
     },
     {
       "title": "в",
@@ -62,6 +64,13 @@
       "createdAt": "2023-12-20T10:59:19.323Z",
       "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
       "id": 25
+    },
+    {
+      "title": "wwww",
+      "content": "wwww",
+      "createdAt": "20-12-2023",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 29
     }
   ]
 }
