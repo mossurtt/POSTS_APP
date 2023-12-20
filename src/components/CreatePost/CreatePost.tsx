@@ -4,11 +4,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { twMerge } from 'tailwind-merge';
 import Card from '../Card/Card';
-import PostProps from '../Post/post.types';
+import PostProps from '../Post/Post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
 import { usePost } from '../../contexts/PostContext/PostContext';
-import { PostFormData, PostSchema } from '../Post/postSchema';
+import { PostFormData, PostSchema } from '../Post/PostSchema';
 
 function CreatePostForm(post: PostProps) {
   const { addPost } = usePost();

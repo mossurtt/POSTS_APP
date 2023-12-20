@@ -4,7 +4,7 @@ import {
 import PostProps from '../../components/Post/Post.types';
 import { PostContextType, PostProviderProps } from './PostContext.types';
 import { RecentlyCreatedPostProps } from '../../components/CreatePost/CreatePost.types';
-import { validatePostFormData } from '../../components/Post/postSchema';
+import { validatePostFormData } from '../../components/Post/PostSchema';
 
 const PostContext = createContext<PostContextType>({} as PostContextType);
 
