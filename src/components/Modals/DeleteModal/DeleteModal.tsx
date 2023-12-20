@@ -1,9 +1,11 @@
+import { useModal } from '../../../contexts/ModalContext/ModalContext';
 import { usePost } from '../../../contexts/PostContext/PostContext';
 import Button from '../../Button/Button';
 import BaseModal from '../BaseModal/BaseModal';
 
 function DeleteModal() {
-  const { selectedPost, deletePost, setShowModal } = usePost();
+  const { selectedPost, deletePost } = usePost();
+  const { setShowModal } = useModal();
 
   const onSubmit = () => {
     if (selectedPost) deletePost(selectedPost);

@@ -1,5 +1,5 @@
-import { Dispatch, ReactNode, SetStateAction } from 'react';
-import PostProps from '../../components/Post/Post.types';
+import { ReactNode } from 'react';
+import PostProps from '../../components/Post/post.types';
 
 export type PostContextType = {
   posts: PostProps[] | null;
@@ -8,8 +8,6 @@ export type PostContextType = {
   addPost: (newPost: PostProps) => Promise<PostProps | undefined>;
   setSelectedPost: (post: PostProps) => void;
   selectedPost: null | PostProps;
-  showModal: boolean;
-  setShowModal: Dispatch<SetStateAction<boolean>>;
 };
 
 export type PostProviderProps = {

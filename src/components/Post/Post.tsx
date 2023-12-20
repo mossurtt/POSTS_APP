@@ -10,6 +10,7 @@ import Rating from '../Rating/Rating';
 import { useScore } from '../../contexts/ScoreContext/ScoreContext';
 import { usePost } from '../../contexts/PostContext/PostContext';
 import { PATHS } from '../../constants/paths';
+import { useModal } from '../../contexts/ModalContext/ModalContext';
 import Col from '../Col/Col';
 import Row from '../Row/Row';
 
@@ -18,7 +19,8 @@ function Post(props: PostProps) {
     id, title, avatarUrl, createdAt, content, canRate, editable,
   } = props;
   const { scores, addScore, removeScore } = useScore();
-  const { updatePost, setSelectedPost, setShowModal } = usePost();
+  const { updatePost, setSelectedPost } = usePost();
+  const { setShowModal } = useModal();
 
   const [ratedPos, setRatedPos] = useState<boolean>(false);
   const [ratedNeg, setRatedNeg] = useState<boolean>(false);

@@ -11,7 +11,6 @@ const PostContext = createContext<PostContextType>({} as PostContextType);
 export function PostProvider({ children }: PostProviderProps) {
   const [posts, setPosts] = useState<PostProps[]>([]);
   const [selectedPost, setSelectedPost] = useState<PostProps | null>(null);
-  const [showModal, setShowModal] = useState<boolean>(false);
 
   const fetchData = async () => {
     try {
@@ -115,22 +114,12 @@ export function PostProvider({ children }: PostProviderProps) {
     () => ({
       posts,
       selectedPost,
-      showModal,
-      setShowModal,
       updatePost,
       deletePost,
       addPost,
       setSelectedPost: (post) => setSelectedPost(post),
     }),
-    [
-      updatePost,
-      deletePost,
-      addPost,
-      posts,
-      selectedPost,
-      showModal,
-      setShowModal,
-    ],
+    [updatePost, deletePost, posts, selectedPost],
   );
 
   return (
