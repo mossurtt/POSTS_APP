@@ -3,6 +3,8 @@ import {
 } from 'react';
 import PostProps from '../../components/Post/Post.types';
 import { PostContextType, PostProviderProps } from './PostContext.types';
+import { RecentlyCreatedPostProps } from '../../components/CreatePost/CreatePost.types';
+import { validatePostFormData } from '../../components/Post/postSchema';
 
 const PostContext = createContext<PostContextType>({} as PostContextType);
 
@@ -55,12 +57,54 @@ export function PostProvider({ children }: PostProviderProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(deletedPost),
       });
+
       if (res.ok) {
         setPosts(posts.filter((post) => post.id !== deletedPost.id));
       } else throw new Error('Invalid response');
     } catch (e) {
       console.error(e);
     }
+  };
+
+  const addPost = async ({
+    title,
+    content,
+  }: Pick<PostProps, 'title' | 'content'>): Promise<PostProps> => {
+    const post: RecentlyCreatedPostProps = {
+      title,
+      content,
+      createdAt: new Date().toISOString(),
+      avatarUrl: 'https://cdn-icons-png.flaticon.com/512/3607/3607444.png',
+    };
+
+    const res = await fetch('http://localhost:8000/posts', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(post),
+    });
+
+    if (!res.ok) {
+      throw new Error("Couldn't add post");
+    }
+
+    const recentlyCreatedPost: PostProps = await res.json();
+
+    if (!recentlyCreatedPost.id) {
+      throw new Error('Incorrect json response');
+    }
+
+    validatePostFormData(recentlyCreatedPost);
+
+    try {
+      setPosts((prevState) => [...prevState, recentlyCreatedPost]);
+    } catch (e) {
+      console.log(e);
+    }
+
+    return recentlyCreatedPost;
   };
 
   useEffect(() => {
@@ -75,9 +119,18 @@ export function PostProvider({ children }: PostProviderProps) {
       setShowModal,
       updatePost,
       deletePost,
+      addPost,
       setSelectedPost: (post) => setSelectedPost(post),
     }),
-    [updatePost, deletePost, posts, selectedPost, showModal, setShowModal],
+    [
+      updatePost,
+      deletePost,
+      addPost,
+      posts,
+      selectedPost,
+      showModal,
+      setShowModal,
+    ],
   );
 
   return (

@@ -1,9 +1,9 @@
 type PostProps = {
   id: number;
   title: string;
-  avatarUrl: string;
-  date: string;
   content: string;
+  avatarUrl: string;
+  createdAt: string;
   canRate: boolean;
   editable: boolean;
 };
