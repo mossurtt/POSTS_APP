@@ -3,6 +3,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CustomLink from '../Link/Link';
 import logo from '../../assets/05_app_icon.png';
 import { PATHS } from '../../constants/paths';
+import SelectLang from '../SelectLanguage/SelectLanguage';
 
 function Header() {
   return (
@@ -11,6 +12,7 @@ function Header() {
         <img src={logo} alt="Logo" style={{ width: '60px', height: '50px' }} />
       </div>
       <div className="flex justify-center">
+        <SelectLang />
         <CustomLink
           to={PATHS.POSTS}
           style={{

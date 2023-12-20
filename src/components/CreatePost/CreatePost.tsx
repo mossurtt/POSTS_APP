@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { twMerge } from 'tailwind-merge';
+import { t } from 'i18next';
 import Card from '../Card/Card';
 import PostProps from '../Post/Post.types';
 import Button from '../Button/Button';
@@ -54,7 +55,7 @@ function CreatePostForm(post: PostProps) {
       <div className="flex-row flex justify-center">
         <Avatar src={post.avatarUrl} alt="avatar" size="48px" />
         <span className="text-2xl font-semibold m-2 pl-3 justify-end">
-          New post
+          {t('new-post')}
         </span>
       </div>
       <div>
@@ -84,12 +85,12 @@ function CreatePostForm(post: PostProps) {
           <Button
             onClick={handleSubmit(handleOnSave)}
             className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-emerald-500/50"
-            title="Save"
+            title={t('save')}
           />
           <Button
             onClick={handleOnCancel}
             className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
-            title="Cancel"
+            title={t('cancel')}
           />
         </div>
       </div>

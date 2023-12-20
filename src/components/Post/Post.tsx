@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { t } from 'i18next';
 import PostProps from './Post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
@@ -133,12 +134,12 @@ function Post(props: PostProps) {
               <Button
                 onClick={handleSubmit(handleOnSave)}
                 className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
-                title="Save"
+                title={t('save')}
               />
               <Button
                 onClick={handleOnCancel}
                 className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
-                title="Cancel"
+                title={t('cancel')}
               />
             </div>
           ) : (
@@ -146,12 +147,12 @@ function Post(props: PostProps) {
               <Button
                 onClick={handleOnEdit}
                 className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded"
-                title="Edit"
+                title={t('edit')}
               />
               <Button
                 onClick={onDelete}
                 className="text-red hover:bg-red-300 px-3 py-1 rounded"
-                title="Delete"
+                title={t('delete')}
               />
             </div>
           )}
