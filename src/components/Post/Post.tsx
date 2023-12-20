@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import PostProps from './post.types';
+import PostProps from './Post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
 import Rating from '../Rating/Rating';
@@ -11,10 +11,12 @@ import { useScore } from '../../contexts/ScoreContext/ScoreContext';
 import { usePost } from '../../contexts/PostContext/PostContext';
 import { PATHS } from '../../constants/paths';
 import { useModal } from '../../contexts/ModalContext/ModalContext';
+import Col from '../Col/Col';
+import Row from '../Row/Row';
 
 function Post(props: PostProps) {
   const {
-    id, title, avatarUrl, date, content, canRate, editable,
+    id, title, avatarUrl, createdAt, content, canRate, editable,
   } = props;
   const { scores, addScore, removeScore } = useScore();
   const { updatePost, setSelectedPost } = usePost();
@@ -81,8 +83,8 @@ function Post(props: PostProps) {
   };
 
   return (
-    <div className="flex items-center justify-center p-4">
-      <div className="w-3/4 border rounded-lg p-4 m-4 flex flex-col relative bg-slate-50">
+    <Col>
+      <div className="w-full border rounded-lg p-4 m-4 relative bg-slate-50">
         <Rating
           averageScore={averageScore}
           averageScoreColor={averageScoreColor}
@@ -100,7 +102,7 @@ function Post(props: PostProps) {
               <div className="ml-4 text-base font-semibold">{title}</div>
             )}
           </div>
-          <div className="text-gray-500 text-sm self-center">{date}</div>
+          <div className="text-gray-500 text-sm self-center">{createdAt}</div>
         </div>
         {editable ? (
           <textarea
@@ -111,7 +113,7 @@ function Post(props: PostProps) {
         ) : (
           <div className="mt-4 text-xs flex-grow">{content}</div>
         )}
-        <div className="flex justify-between items-end mt-4">
+        <Row>
           <div className="flex items-center space-x-2">
             <FontAwesomeIcon
               icon={faPlusSquare}
@@ -126,38 +128,36 @@ function Post(props: PostProps) {
             />
             <span>{postScores.negScore}</span>
           </div>
-          <div className="mt-4 flex justify-end space-x-2">
-            {editable ? (
-              <div className="flex space-x-2">
-                <Button
-                  onClick={handleSubmit(handleOnSave)}
-                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
-                  title="Save"
-                />
-                <Button
-                  onClick={handleOnCancel}
-                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
-                  title="Cancel"
-                />
-              </div>
-            ) : (
-              <div>
-                <Button
-                  onClick={handleOnEdit}
-                  className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded"
-                  title="Edit"
-                />
-                <Button
-                  onClick={onDelete}
-                  className="text-red hover:bg-red-300 px-3 py-1 rounded"
-                  title="Delete"
-                />
-              </div>
-            )}
-          </div>
-        </div>
+          {editable ? (
+            <div className="flex space-x-2">
+              <Button
+                onClick={handleSubmit(handleOnSave)}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+                title="Save"
+              />
+              <Button
+                onClick={handleOnCancel}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+                title="Cancel"
+              />
+            </div>
+          ) : (
+            <div>
+              <Button
+                onClick={handleOnEdit}
+                className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded"
+                title="Edit"
+              />
+              <Button
+                onClick={onDelete}
+                className="text-red hover:bg-red-300 px-3 py-1 rounded"
+                title="Delete"
+              />
+            </div>
+          )}
+        </Row>
       </div>
-    </div>
+    </Col>
   );
 }
 

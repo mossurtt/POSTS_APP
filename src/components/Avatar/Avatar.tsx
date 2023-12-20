@@ -1,4 +1,4 @@
-import AvatarProps from './avatar.types';
+import AvatarProps from './Avatar.types';
 
 function Avatar({ src, alt, size }: AvatarProps) {
   const avatarStyle = {

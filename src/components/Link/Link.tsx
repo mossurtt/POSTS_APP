@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import CustomLinkProps from './link.types';
+import CustomLinkProps from './Link.types';
 
 function CustomLink({ to, style, children }: CustomLinkProps) {
   return (

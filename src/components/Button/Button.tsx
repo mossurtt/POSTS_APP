@@ -1,4 +1,4 @@
-import ButtonProps from './button.types';
+import ButtonProps from './Button.types';
 
 function Button({ title, onClick, ...rest }: ButtonProps) {
   return (

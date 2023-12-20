@@ -1,4 +1,4 @@
-import PostProps from '../Post/post.types';
+import PostProps from '../Post/Post.types';
 
 interface PostListProps {
   posts: PostProps[];
