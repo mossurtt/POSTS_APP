@@ -1,4 +1,4 @@
-import CardProps from './card.types';
+import CardProps from './Card.types';
 
 function Card({ children, isLoading }: CardProps) {
   return (

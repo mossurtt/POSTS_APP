@@ -1,7 +1,7 @@
 import { usePost } from '../../contexts/PostContext/PostContext';
 import DeleteModal from '../Modals/DeleteModal/DeleteModal';
 import Post from '../Post/Post';
-import PostListProps from './postlist.types';
+import PostListProps from './PostList.types';
 
 function PostList({ posts }: PostListProps) {
   const { showModal } = usePost();

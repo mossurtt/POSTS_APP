@@ -1,5 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
-import PostProps from '../../components/Post/post.types';
+import PostProps from '../../components/Post/Post.types';
 
 export type PostContextType = {
   posts: PostProps[] | null;

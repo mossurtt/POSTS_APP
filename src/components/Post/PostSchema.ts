@@ -1,5 +1,5 @@
 import { ZodError, z } from 'zod';
-import PostProps from './post.types';
+import PostProps from './Post.types';
 
 export const PostSchema = z.object({
   title: z.string().min(1, 'Title must not be empty').max(255),
