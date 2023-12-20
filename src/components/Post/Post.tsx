@@ -13,7 +13,7 @@ import { PATHS } from '../../constants/paths';
 
 function Post(props: PostProps) {
   const {
-    id, title, avatarUrl, date, content, canRate, editable,
+    id, title, avatarUrl, createdAt, content, canRate, editable,
   } = props;
   const { scores, addScore, removeScore } = useScore();
   const { updatePost, setSelectedPost, setShowModal } = usePost();
@@ -98,7 +98,7 @@ function Post(props: PostProps) {
               <div className="ml-4 text-base font-semibold">{title}</div>
             )}
           </div>
-          <div className="text-gray-500 text-sm self-center">{date}</div>
+          <div className="text-gray-500 text-sm self-center">{createdAt}</div>
         </div>
         {editable ? (
           <textarea
