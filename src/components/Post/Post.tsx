@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { t } from 'i18next';
+// import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
+import { twMerge } from 'tailwind-merge';
+import { zodResolver } from '@hookform/resolvers/zod';
 import PostProps from './Post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
@@ -14,6 +17,7 @@ import { PATHS } from '../../constants/paths';
 import { useModal } from '../../contexts/ModalContext/ModalContext';
 import Col from '../Col/Col';
 import Row from '../Row/Row';
+import { PostFormData, PostSchema } from './PostSchema';
 
 function Post(props: PostProps) {
   const {
@@ -22,7 +26,7 @@ function Post(props: PostProps) {
   const { scores, addScore, removeScore } = useScore();
   const { updatePost, setSelectedPost } = usePost();
   const { setShowModal } = useModal();
-
+  const { t } = useTranslation();
   const [ratedPos, setRatedPos] = useState<boolean>(false);
   const [ratedNeg, setRatedNeg] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -70,7 +74,12 @@ function Post(props: PostProps) {
     navigate(PATHS.POST_DETAILS);
   };
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<PostFormData>({
+    resolver: zodResolver(PostSchema),
     defaultValues: { title, content },
   });
 
@@ -97,7 +106,13 @@ function Post(props: PostProps) {
               <input
                 {...register('title')}
                 id="title"
-                className="m-2 p-2 border rounded-md w-full text-base font-medium"
+                className={twMerge(
+                  'm-2 p-2 border rounded-md w-11/12',
+                  errors.title?.message && 'placeholder-red-300',
+                )}
+                placeholder={
+                  (errors.title && `${t('title-error')}`) ?? `${t('title')}`
+                }
               />
             ) : (
               <div className="ml-4 text-base font-semibold">{title}</div>
@@ -109,10 +124,16 @@ function Post(props: PostProps) {
           <textarea
             {...register('content')}
             id="content"
-            className="mt-1 p-2 border rounded-md w-full text-xs"
+            className={twMerge(
+              'm-4 p-2 border rounded-md w-11/12 text-base',
+              errors.content?.message && 'placeholder-red-300',
+            )}
+            placeholder={
+              (errors.content && `${t('content-error')}`) ?? `${t('content')}`
+            }
           />
         ) : (
-          <div className="mt-4 text-xs flex-grow">{content}</div>
+          <div className="mt-4 text-base flex-grow">{content}</div>
         )}
         <Row>
           <div className="flex items-center space-x-2">

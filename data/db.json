@@ -1,67 +1,18 @@
 {
   "posts": [
     {
-      "title": "newpost",
-      "content": "newcontent",
-      "createdAt": "2023-12-18T17:32:39.757Z",
+      "title": "dd",
+      "content": "dd",
+      "createdAt": "2023-12-21T13:00:30.685Z",
       "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 17
+      "id": 27
     },
     {
-      "title": "ds",
-      "content": "d",
-      "createdAt": "2023-12-18T17:32:59.054Z",
+      "title": "wdwd",
+      "content": "dwdw",
+      "createdAt": "2023-12-21T13:08:23.132Z",
       "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 18
-    },
-    {
-      "title": "ds",
-      "content": "sd",
-      "createdAt": "2023-12-18T17:33:13.963Z",
-      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 19
-    },
-    {
-      "title": "sdds",
-      "content": "sdsd",
-      "createdAt": "2023-12-18T17:33:21.878Z",
-      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 20
-    },
-    {
-      "title": "Віка",
-      "content": "сама лучя",
-      "createdAt": "2023-12-18T18:19:17.844Z",
-      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 21
-    },
-    {
-      "title": "в",
-      "content": "в",
-      "createdAt": "2023-12-18T20:38:28.966Z",
-      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 22
-    },
-    {
-      "title": "dee",
-      "content": "dded",
-      "createdAt": "2023-12-19T10:46:23.678Z",
-      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 23
-    },
-    {
-      "title": "saxd",
-      "content": "asdada",
-      "createdAt": "2023-12-19T10:53:04.834Z",
-      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 24
-    },
-    {
-      "title": "dwed",
-      "content": "weded",
-      "createdAt": "2023-12-20T10:59:19.323Z",
-      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "id": 25
+      "id": 28
     }
   ]
 }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { twMerge } from 'tailwind-merge';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import Card from '../Card/Card';
 import PostProps from '../Post/Post.types';
 import Button from '../Button/Button';
@@ -14,6 +14,7 @@ import { PostFormData, PostSchema } from '../Post/PostSchema';
 function CreatePostForm(post: PostProps) {
   const { addPost } = usePost();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   const {
     register,
@@ -64,9 +65,11 @@ function CreatePostForm(post: PostProps) {
           id="title"
           className={twMerge(
             'm-4 p-2 border rounded-md w-11/12',
-            errors.title?.message && 'placeholder-red-400',
+            errors.title?.message && 'placeholder-red-300',
           )}
-          placeholder={errors.title?.message ?? 'title'}
+          placeholder={
+            (errors.title && `${t('title-error')}`) ?? `${t('title')}`
+          }
         />
       </div>
       <div>
@@ -77,7 +80,9 @@ function CreatePostForm(post: PostProps) {
             'ml-4 p-2 h-48 border rounded-md w-11/12',
             errors.content?.message && 'placeholder-red-300',
           )}
-          placeholder={errors.content?.message ?? 'content'}
+          placeholder={
+            (errors.content && `${t('content-error')}`) ?? `${t('content')}`
+          }
         />
       </div>
       <div className="mt-4 flex justify-start space-x-2">
