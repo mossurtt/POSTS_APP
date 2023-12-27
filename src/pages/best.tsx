@@ -5,22 +5,26 @@ import DeleteModal from '../components/Modals/DeleteModal/DeleteModal';
 import { useModal } from '../contexts/ModalContext/ModalContext';
 import PostList from '../components/PostList/PostList';
 
-
 function Best() {
   const { scores } = useScore();
   const { posts } = usePost();
   const { showModal } = useModal();
-  const sortedPosts = [...(posts || [])];
 
-  sortedPosts.sort((postA, postB) => {
-    const scoreA = (scores[postA.id] || { posScore: 0, negScore: 0 }).posScore;
-    const scoreB = (scores[postB.id] || { posScore: 0, negScore: 0 }).posScore;
-    return scoreB - scoreA;
+  const orderedPosts = [...(posts || [])];
+
+  orderedPosts.sort((postA, postB) => {
+    const scoresA = scores[postA.id] || { posScore: 0, negScore: 0 };
+    const scoresB = scores[postB.id] || { posScore: 0, negScore: 0 };
+
+    const totalScoreA = scoresA.posScore - scoresA.negScore;
+    const totalScoreB = scoresB.posScore - scoresB.negScore;
+
+    return totalScoreB - totalScoreA;
   });
 
   return (
     <PageWrapper>
-      {!!sortedPosts?.length && <PostList posts={sortedPosts} />}
+      {!!orderedPosts?.length && <PostList posts={orderedPosts} />}
       {showModal && <DeleteModal />}
     </PageWrapper>
   );

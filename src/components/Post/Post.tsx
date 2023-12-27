@@ -28,6 +28,7 @@ function Post(props: PostProps) {
   const { setShowModal } = useModal();
 
   const { t } = useTranslation();
+
   const [ratedPos, setRatedPos] = useState<boolean>(false);
   const [ratedNeg, setRatedNeg] = useState<boolean>(false);
   const navigate = useNavigate();
