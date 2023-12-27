@@ -54,7 +54,11 @@ function CreatePostForm(post: PostProps) {
   return (
     <Card isLoading={isLoading}>
       <div className="flex-row flex justify-center">
-        <Avatar src={post.avatarUrl} alt="avatar" size="48px" />
+        <Avatar
+          src="https://cdn-icons-png.flaticon.com/512/3607/3607444.png"
+          alt="avatar"
+          size="48px"
+        />
         <span className="text-2xl font-semibold m-2 pl-3 justify-end">
           {t('new-post')}
         </span>
@@ -85,7 +89,7 @@ function CreatePostForm(post: PostProps) {
           }
         />
       </div>
-      <div className="mt-4 flex justify-start space-x-2">
+      <div className="ml-4 mt-2 flex space-x-2">
         <div className="flex space-x-2">
           <Button
             onClick={handleSubmit(handleOnSave)}

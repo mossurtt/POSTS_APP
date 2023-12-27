@@ -113,7 +113,7 @@ function Post(props: PostProps) {
 
   return (
     <Col>
-      <div className="w-full border rounded-lg p-4 m-4 relative bg-slate-50">
+      <div className="w-3/4 min-w-48 border rounded-lg p-4 m-4 relative bg-slate-50">
         <Rating
           averageScore={averageScore}
           averageScoreColor={averageScoreColor}
