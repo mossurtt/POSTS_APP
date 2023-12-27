@@ -6,9 +6,15 @@ import { PATHS } from '../../constants/paths';
 
 function Header() {
   return (
-    <header className="bg-[#2153a0] p-4 mb-10 flex justify-between items-center">
+    <header className="bg-[#2153a0] pl-6 pr-6 mb-10 flex justify-between items-center">
       <div>
-        <img src={logo} alt="Logo" style={{ width: '60px', height: '50px' }} />
+        <CustomLink to={PATHS.ROOT} isNotHoverable>
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ width: '60px', height: '50px' }}
+          />
+        </CustomLink>
       </div>
       <div className="flex justify-center">
         <CustomLink
