@@ -16,11 +16,11 @@ function Header() {
           <img
             src={logo}
             alt="Logo"
-            style={{ width: '60px', height: '50px' }}
+            style={{ width: '70px', height: '50px' }}
           />
         </CustomLink>
       </div>
-      <div className="flex justify-center">
+      <div className="justify-center">
         <SelectLang />
         <CustomLink
           to={PATHS.POSTS}

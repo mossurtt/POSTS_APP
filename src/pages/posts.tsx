@@ -6,7 +6,9 @@ function Posts() {
   const { posts } = usePost();
 
   return (
-    <PageWrapper>{!!posts?.length && <PostList posts={posts} />}</PageWrapper>
+    <PageWrapper>
+      {!!posts?.length && <PostList posts={posts} canRate />}
+    </PageWrapper>
   );
 }
 

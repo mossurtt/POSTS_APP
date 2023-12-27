@@ -73,7 +73,7 @@ export function PostProvider({ children }: PostProviderProps) {
     const post: RecentlyCreatedPostProps = {
       title,
       content,
-      createdAt: format(new Date(), 'dd-MM-yyyy'),
+      createdAt: format(new Date(), 'dd-MM-yyyy HH:mm'),
       avatarUrl: 'https://cdn-icons-png.flaticon.com/512/3607/3607444.png',
     };
 

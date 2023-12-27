@@ -23,7 +23,7 @@ function Root() {
         <div className="font-sans font-bold text-7xl text-white mb-4">
           {t('hello')}
         </div>
-        <CustomLink to={PATHS.POSTS}>
+        <CustomLink to={PATHS.POSTS} isNotHoverable>
           <Button onClick={onClick} title={t('show-posts')} />
         </CustomLink>
       </div>
