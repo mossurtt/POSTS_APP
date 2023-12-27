@@ -1,6 +1,7 @@
 import {
   createContext, useContext, useEffect, useMemo, useState,
 } from 'react';
+import { format } from 'date-fns';
 import PostProps from '../../components/Post/Post.types';
 import { PostContextType, PostProviderProps } from './PostContext.types';
 import { RecentlyCreatedPostProps } from '../../components/CreatePost/CreatePost.types';
@@ -72,7 +73,7 @@ export function PostProvider({ children }: PostProviderProps) {
     const post: RecentlyCreatedPostProps = {
       title,
       content,
-      createdAt: new Date().toISOString(),
+      createdAt: format(new Date(), 'dd-MM-yyyy'),
       avatarUrl: 'https://cdn-icons-png.flaticon.com/512/3607/3607444.png',
     };
 
