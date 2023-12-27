@@ -9,22 +9,23 @@ function Best() {
   const { scores } = useScore();
   const { posts } = usePost();
   const { showModal } = useModal();
-  const sortedPosts = [...(posts || [])];
 
-  sortedPosts.sort((postA, postB) => {
+  const orderPosts = [...(posts || [])];
+
+  orderPosts.sort((postA, postB) => {
     const scoresA = scores[postA.id] || { posScore: 0, negScore: 0 };
     const scoresB = scores[postB.id] || { posScore: 0, negScore: 0 };
 
-    const averageScoreA = scoresA.posScore - scoresA.negScore;
-    const averageScoreB = scoresB.posScore - scoresB.negScore;
+    const totalScoreA = scoresA.posScore - scoresA.negScore;
+    const totalScoreB = scoresB.posScore - scoresB.negScore;
 
-    return averageScoreB - averageScoreA;
+    return totalScoreB - totalScoreA;
   });
 
   return (
     <PageWrapper>
-      {!!sortedPosts?.length
-        && sortedPosts.map((post) => (
+      {!!orderPosts?.length
+        && orderPosts.map((post) => (
           <Post {...post} key={post.id} canRate={false} editable={false} />
         ))}
       {showModal && <DeleteModal />}
