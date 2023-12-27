@@ -1,0 +1,25 @@
+{
+    "hello": "CZEŚĆ",
+    "show-posts": "POKAŻ POSTY",
+
+    "posts": "Posty",
+    "best": "Najlepsze",
+
+    "edit": "Edytuj",
+    "delete": "Usuń",
+
+    "are-you-sure": "Czy na pewno usunąć?",
+    
+    "new-post": "Nowy post",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+
+    "yes-delete": "Tak, usuń",
+
+    "title": "tytuł",
+    "content": "treść",
+
+    "title-error": "Tytuł nie może być pusty",
+    "content-error": "Treść nie może być pusta"
+    
+}
