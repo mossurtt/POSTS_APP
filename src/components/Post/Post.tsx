@@ -26,6 +26,7 @@ function Post(props: PostProps) {
   const { scores, addScore, removeScore } = useScore();
   const { updatePost, setSelectedPost } = usePost();
   const { setShowModal } = useModal();
+
   const { t } = useTranslation();
   const [ratedPos, setRatedPos] = useState<boolean>(false);
   const [ratedNeg, setRatedNeg] = useState<boolean>(false);
@@ -35,17 +36,34 @@ function Post(props: PostProps) {
 
   const handleScoreClick = (isAdd: boolean): void => {
     if (canRate) {
-      if (!ratedPos) {
-        addScore(id, isAdd);
-        setRatedPos(isAdd);
-
-        if (ratedNeg) {
-          removeScore(id, !isAdd);
+      switch (true) {
+        case !ratedPos && !ratedNeg:
+          isAdd ? addScore(id, true) : addScore(id, false);
+          setRatedPos(isAdd);
           setRatedNeg(!isAdd);
-        }
-      } else {
-        removeScore(id, isAdd);
-        setRatedPos(!isAdd);
+          break;
+        case ratedPos && !ratedNeg && !isAdd:
+          removeScore(id, true);
+          setRatedPos(false);
+          addScore(id, false);
+          setRatedNeg(true);
+          break;
+        case !ratedPos && ratedNeg && isAdd:
+          removeScore(id, false);
+          setRatedNeg(false);
+          addScore(id, true);
+          setRatedPos(true);
+          break;
+        case ratedPos && !ratedNeg && isAdd:
+          removeScore(id, true);
+          setRatedPos(false);
+          break;
+        case !ratedPos && ratedNeg && !isAdd:
+          removeScore(id, false);
+          setRatedNeg(false);
+          break;
+        default:
+          break;
       }
     }
   };
@@ -136,20 +154,24 @@ function Post(props: PostProps) {
           <div className="mt-4 text-base flex-grow">{content}</div>
         )}
         <Row>
-          <div className="flex items-center space-x-2">
-            <FontAwesomeIcon
-              icon={faPlusSquare}
-              className="text-green-400 cursor-pointer text-xl"
-              onClick={() => handleScoreClick(true)}
-            />
-            <span>{postScores.posScore}</span>
-            <FontAwesomeIcon
-              icon={faMinusSquare}
-              className="text-red-500 mr-2 cursor-pointer text-xl"
-              onClick={() => handleScoreClick(false)}
-            />
-            <span>{postScores.negScore}</span>
-          </div>
+          {canRate ? (
+            <div className="flex items-center space-x-2">
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                className="text-green-400 cursor-pointer text-xl"
+                onClick={() => handleScoreClick(true)}
+              />
+              <span>{postScores.posScore}</span>
+              <FontAwesomeIcon
+                icon={faMinusSquare}
+                className="text-red-500 mr-2 cursor-pointer text-xl"
+                onClick={() => handleScoreClick(false)}
+              />
+              <span>{postScores.negScore}</span>
+            </div>
+          ) : (
+            <p />
+          )}
           {editable ? (
             <div className="flex space-x-2">
               <Button

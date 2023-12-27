@@ -46,5 +46,6 @@ module.exports = {
     'no-console': 'off',
     'consistent-return': 'off',
     'react-hooks/exhaustive-deps': 'warn',
+    '@typescript-eslint/no-unused-expressions': 'off'
   },
 };

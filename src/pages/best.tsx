@@ -5,6 +5,7 @@ import DeleteModal from '../components/Modals/DeleteModal/DeleteModal';
 import { useModal } from '../contexts/ModalContext/ModalContext';
 import PostList from '../components/PostList/PostList';
 
+
 function Best() {
   const { scores } = useScore();
   const { posts } = usePost();
