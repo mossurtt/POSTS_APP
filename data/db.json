@@ -1,54 +1,67 @@
 {
   "posts": [
     {
-      "id": 4,
-      "title": "Getting Started with TypeScript",
-      "content": "A beginner's guide to TypeScript for safer JavaScript development.",
-      "date": "2023-10-18",
-      "canRate": false,
+      "title": "newpost",
+      "content": "newcontent",
+      "createdAt": "2023-12-18T17:32:39.757Z",
       "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "editable": true
+      "id": 17
     },
     {
-      "id": 5,
-      "title": "Mastering2322 CSS Fle22xbox Layout",
-      "content": "Learn how to create flexible and responsive layouts with CSS Flexbox.",
-      "date": "2023-10-19",
-      "canRate": true,
+      "title": "ds",
+      "content": "d",
+      "createdAt": "2023-12-18T17:32:59.054Z",
       "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
-      "editable": true
+      "id": 18
     },
     {
-      "id": 6,
-      "title": "Authentic222ation in React Applications",
-      "content": "Implement user authentication in your React apps using various methods.",
-      "date": "2023-10-20",
-      "canRate": true,
-      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png"
+      "title": "ds",
+      "content": "sd",
+      "createdAt": "2023-12-18T17:33:13.963Z",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 19
     },
     {
-      "id": 7,
-      "title": "Introduction to Database Design",
-      "content": "Get started with database design principles and best practices.",
-      "date": "2023-10-21"
+      "title": "sdds",
+      "content": "sdsd",
+      "createdAt": "2023-12-18T17:33:21.878Z",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 20
     },
     {
-      "id": 8,
-      "title": "Using Redux for State Management",
-      "content": "Manage complex state in your React apps with Redux state management.",
-      "date": "2023-10-22"
+      "title": "Віка",
+      "content": "сама лучя",
+      "createdAt": "2023-12-18T18:19:17.844Z",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 21
     },
     {
-      "id": 9,
-      "title": "Building a Full-Stack MERN Application",
-      "content": "Build a complete web application using the MERN (MongoDB, Express, React, Node) stack.",
-      "date": "2023-10-23"
+      "title": "в",
+      "content": "в",
+      "createdAt": "2023-12-18T20:38:28.966Z",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 22
     },
     {
-      "id": 10,
-      "title": "Deploying a React App to Heroku",
-      "content": "Learn how to deploy your React application to the Heroku cloud platform.",
-      "date": "2023-10-24"
+      "title": "dee",
+      "content": "dded",
+      "createdAt": "2023-12-19T10:46:23.678Z",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 23
+    },
+    {
+      "title": "saxd",
+      "content": "asdada",
+      "createdAt": "2023-12-19T10:53:04.834Z",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 24
+    },
+    {
+      "title": "dwed",
+      "content": "weded",
+      "createdAt": "2023-12-20T10:59:19.323Z",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 25
     }
   ]
 }

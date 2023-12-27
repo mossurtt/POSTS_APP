@@ -35,7 +35,7 @@ function Header() {
         >
           Best
         </CustomLink>
-        <CustomLink to="/new-post">
+        <CustomLink to={PATHS.NEW_POST}>
           <FontAwesomeIcon icon={faPlus} />
         </CustomLink>
       </div>
