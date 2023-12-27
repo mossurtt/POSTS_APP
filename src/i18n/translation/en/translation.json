@@ -1,0 +1,23 @@
+{
+    "hello": "HELLO",
+    "show-posts": "SHOW POSTS",
+
+    "posts": "Posts",
+    "best": "Best",
+
+    "edit": "Edit",
+    "delete": "Delete",
+    "are-you-sure": "Are you sure?",
+    
+    "new-post": "New post",
+    "save": "Save",
+    "cancel": "Cancel",
+
+    "yes-delete": "Yes, delete",
+
+    "title": "title",
+    "content": "content",
+
+    "title-error": "Title must not be empty",
+    "content-error": "Content must not be empty"
+}

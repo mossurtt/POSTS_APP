@@ -3,6 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+// import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
+import { twMerge } from 'tailwind-merge';
+import { zodResolver } from '@hookform/resolvers/zod';
 import PostProps from './Post.types';
 import Button from '../Button/Button';
 import Avatar from '../Avatar/Avatar';
@@ -13,6 +17,7 @@ import { PATHS } from '../../constants/paths';
 import { useModal } from '../../contexts/ModalContext/ModalContext';
 import Col from '../Col/Col';
 import Row from '../Row/Row';
+import { PostFormData, PostSchema } from './PostSchema';
 
 function Post(props: PostProps) {
   const {
@@ -21,6 +26,8 @@ function Post(props: PostProps) {
   const { scores, addScore, removeScore } = useScore();
   const { updatePost, setSelectedPost } = usePost();
   const { setShowModal } = useModal();
+
+  const { t } = useTranslation();
 
   const [ratedPos, setRatedPos] = useState<boolean>(false);
   const [ratedNeg, setRatedNeg] = useState<boolean>(false);
@@ -60,26 +67,10 @@ function Post(props: PostProps) {
           break;
       }
     }
-
-    // if (canRate) {
-    //   if (!ratedPos) {
-    //     removeScore(id, isAdd);
-    //     setRatedPos(!isAdd);
-
-    //     if (ratedNeg) {
-    //       addScore(id, !isAdd);
-    //       setRatedNeg(isAdd);
-    //     }
-    //   } else {
-    //     addScore(id, !isAdd);
-    //     setRatedPos(isAdd);
-    //   }
-    // }
   };
 
   const getAverageScore = (): number => postScores.posScore - postScores.negScore;
   const getAverageScoreColor = (averageScore: number): string => {
-    // return ratingColor;
     if (averageScore > 0) {
       return 'bg-green-400';
     }
@@ -102,7 +93,12 @@ function Post(props: PostProps) {
     navigate(PATHS.POST_DETAILS);
   };
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<PostFormData>({
+    resolver: zodResolver(PostSchema),
     defaultValues: { title, content },
   });
 
@@ -129,7 +125,13 @@ function Post(props: PostProps) {
               <input
                 {...register('title')}
                 id="title"
-                className="m-2 p-2 border rounded-md w-full text-base font-medium"
+                className={twMerge(
+                  'm-2 p-2 border rounded-md w-11/12',
+                  errors.title?.message && 'placeholder-red-300',
+                )}
+                placeholder={
+                  (errors.title && `${t('title-error')}`) ?? `${t('title')}`
+                }
               />
             ) : (
               <div className="ml-4 text-base font-semibold">{title}</div>
@@ -141,10 +143,16 @@ function Post(props: PostProps) {
           <textarea
             {...register('content')}
             id="content"
-            className="mt-1 p-2 border rounded-md w-full text-xs"
+            className={twMerge(
+              'm-4 p-2 border rounded-md w-11/12 text-base',
+              errors.content?.message && 'placeholder-red-300',
+            )}
+            placeholder={
+              (errors.content && `${t('content-error')}`) ?? `${t('content')}`
+            }
           />
         ) : (
-          <div className="mt-4 text-xs flex-grow">{content}</div>
+          <div className="mt-4 text-base flex-grow">{content}</div>
         )}
         <Row>
           {canRate ? (
@@ -170,12 +178,12 @@ function Post(props: PostProps) {
               <Button
                 onClick={handleSubmit(handleOnSave)}
                 className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
-                title="Save"
+                title={t('save')}
               />
               <Button
                 onClick={handleOnCancel}
                 className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
-                title="Cancel"
+                title={t('cancel')}
               />
             </div>
           ) : (
@@ -183,12 +191,12 @@ function Post(props: PostProps) {
               <Button
                 onClick={handleOnEdit}
                 className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded"
-                title="Edit"
+                title={t('edit')}
               />
               <Button
                 onClick={onDelete}
                 className="text-red hover:bg-red-300 px-3 py-1 rounded"
-                title="Delete"
+                title={t('delete')}
               />
             </div>
           )}

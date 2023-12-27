@@ -6,7 +6,7 @@ import PostListProps from './PostList.types';
 function PostList({ posts }: PostListProps) {
   const { showModal } = useModal();
   return (
-    <div>
+    <div className="pb-20">
       {posts.map((post) => (
         <Post {...post} key={post.id} canRate editable={false} />
       ))}

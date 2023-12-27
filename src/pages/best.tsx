@@ -1,9 +1,10 @@
 import { useScore } from '../contexts/ScoreContext/ScoreContext';
 import { usePost } from '../contexts/PostContext/PostContext';
 import PageWrapper from '../components/PageWrapper/PageWrapper';
-import Post from '../components/Post/Post';
 import DeleteModal from '../components/Modals/DeleteModal/DeleteModal';
 import { useModal } from '../contexts/ModalContext/ModalContext';
+import PostList from '../components/PostList/PostList';
+
 
 function Best() {
   const { scores } = useScore();
@@ -23,10 +24,7 @@ function Best() {
 
   return (
     <PageWrapper>
-      {!!sortedPosts?.length
-        && sortedPosts.map((post) => (
-          <Post {...post} key={post.id} canRate={false} editable={false} />
-        ))}
+      {!!sortedPosts?.length && <PostList posts={sortedPosts} />}
       {showModal && <DeleteModal />}
     </PageWrapper>
   );
