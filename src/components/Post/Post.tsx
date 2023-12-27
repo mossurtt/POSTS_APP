@@ -22,7 +22,7 @@ function Post(props: PostProps) {
   const { updatePost, setSelectedPost } = usePost();
   const { setShowModal } = useModal();
 
-  const [ratedPos, setRatedPos] = useState(false);
+  const [ratedPos, setRatedPos] = useState<boolean>(false);
   const [ratedNeg, setRatedNeg] = useState<boolean>(false);
   const navigate = useNavigate();
 
