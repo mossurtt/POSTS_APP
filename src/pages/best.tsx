@@ -12,9 +12,13 @@ function Best() {
   const sortedPosts = [...(posts || [])];
 
   sortedPosts.sort((postA, postB) => {
-    const scoreA = (scores[postA.id] || { posScore: 0, negScore: 0 }).posScore;
-    const scoreB = (scores[postB.id] || { posScore: 0, negScore: 0 }).posScore;
-    return scoreB - scoreA;
+    const scoresA = scores[postA.id] || { posScore: 0, negScore: 0 };
+    const scoresB = scores[postB.id] || { posScore: 0, negScore: 0 };
+
+    const averageScoreA = scoresA.posScore - scoresA.negScore;
+    const averageScoreB = scoresB.posScore - scoresB.negScore;
+
+    return averageScoreB - averageScoreA;
   });
 
   return (
