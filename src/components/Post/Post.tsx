@@ -60,26 +60,10 @@ function Post(props: PostProps) {
           break;
       }
     }
-
-    // if (canRate) {
-    //   if (!ratedPos) {
-    //     removeScore(id, isAdd);
-    //     setRatedPos(!isAdd);
-
-    //     if (ratedNeg) {
-    //       addScore(id, !isAdd);
-    //       setRatedNeg(isAdd);
-    //     }
-    //   } else {
-    //     addScore(id, !isAdd);
-    //     setRatedPos(isAdd);
-    //   }
-    // }
   };
 
   const getAverageScore = (): number => postScores.posScore - postScores.negScore;
   const getAverageScoreColor = (averageScore: number): string => {
-    // return ratingColor;
     if (averageScore > 0) {
       return 'bg-green-400';
     }
