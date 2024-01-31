@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "title": "wwww",
+      "content": "wwww",
+      "createdAt": "20-12-2023",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 29
+    },
+    {
+      "title": "ssss",
+      "content": "sss",
+      "createdAt": "27-12-2023",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 30
+    },
+    {
+      "title": "www",
+      "content": "www",
+      "createdAt": "27-12-2023 14:21",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 31
+    },
+    {
+      "title": "ddddd",
+      "content": "ddd",
+      "createdAt": "27-12-2023 14:23",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+      "id": 32
+    }
+  ]
+}
